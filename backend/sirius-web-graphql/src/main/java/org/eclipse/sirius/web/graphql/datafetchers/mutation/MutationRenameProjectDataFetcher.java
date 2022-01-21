@@ -17,7 +17,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
-import org.eclipse.sirius.components.annotations.graphql.GraphQLMutationTypes;
 import org.eclipse.sirius.components.annotations.spring.graphql.MutationDataFetcher;
 import org.eclipse.sirius.components.collaborative.api.IEditingContextEventProcessorRegistry;
 import org.eclipse.sirius.components.core.api.ErrorPayload;
@@ -26,7 +25,6 @@ import org.eclipse.sirius.components.graphql.api.IDataFetcherWithFieldCoordinate
 import org.eclipse.sirius.web.graphql.messages.IGraphQLMessageService;
 import org.eclipse.sirius.web.graphql.schema.MutationTypeProvider;
 import org.eclipse.sirius.web.services.api.projects.RenameProjectInput;
-import org.eclipse.sirius.web.services.api.projects.RenameProjectSuccessPayload;
 
 import graphql.schema.DataFetchingEnvironment;
 
@@ -44,15 +42,7 @@ import graphql.schema.DataFetchingEnvironment;
  *
  * @author fbarbin
  */
-// @formatter:off
-@GraphQLMutationTypes(
-    input = RenameProjectInput.class,
-    payloads = {
-        RenameProjectSuccessPayload.class
-    }
-)
 @MutationDataFetcher(type = MutationTypeProvider.TYPE, field = MutationRenameProjectDataFetcher.RENAME_PROJECT_FIELD)
-// @formatter:on
 public class MutationRenameProjectDataFetcher implements IDataFetcherWithFieldCoordinates<CompletableFuture<IPayload>> {
 
     public static final String RENAME_PROJECT_FIELD = "renameProject"; //$NON-NLS-1$

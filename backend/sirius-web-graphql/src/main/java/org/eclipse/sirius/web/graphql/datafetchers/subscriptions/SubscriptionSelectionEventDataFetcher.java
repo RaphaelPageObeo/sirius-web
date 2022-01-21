@@ -17,14 +17,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Objects;
 import java.util.UUID;
 
-import org.eclipse.sirius.components.annotations.graphql.GraphQLSubscriptionTypes;
 import org.eclipse.sirius.components.annotations.spring.graphql.SubscriptionDataFetcher;
 import org.eclipse.sirius.components.collaborative.api.IEditingContextEventProcessorRegistry;
-import org.eclipse.sirius.components.collaborative.dto.SubscribersUpdatedEventPayload;
 import org.eclipse.sirius.components.collaborative.selection.api.ISelectionEventProcessor;
 import org.eclipse.sirius.components.collaborative.selection.api.SelectionConfiguration;
 import org.eclipse.sirius.components.collaborative.selection.dto.SelectionEventInput;
-import org.eclipse.sirius.components.collaborative.selection.dto.SelectionRefreshedEventPayload;
 import org.eclipse.sirius.components.core.api.IPayload;
 import org.eclipse.sirius.components.graphql.api.IDataFetcherWithFieldCoordinates;
 import org.eclipse.sirius.web.graphql.schema.SubscriptionTypeProvider;
@@ -47,16 +44,7 @@ import reactor.core.publisher.Flux;
  *
  * @author arichard
  */
-// @formatter:off
-@GraphQLSubscriptionTypes(
-    input = SelectionEventInput.class,
-    payloads = {
-        SelectionRefreshedEventPayload.class,
-        SubscribersUpdatedEventPayload.class,
-    }
-)
 @SubscriptionDataFetcher(type = SubscriptionTypeProvider.TYPE, field = SubscriptionSelectionEventDataFetcher.SELECTION_EVENT_FIELD)
-// @formatter:on
 public class SubscriptionSelectionEventDataFetcher implements IDataFetcherWithFieldCoordinates<Publisher<IPayload>> {
 
     public static final String SELECTION_EVENT_FIELD = "selectionEvent"; //$NON-NLS-1$

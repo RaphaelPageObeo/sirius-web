@@ -16,16 +16,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.Objects;
 
-import org.eclipse.sirius.components.annotations.graphql.GraphQLSubscriptionTypes;
 import org.eclipse.sirius.components.annotations.spring.graphql.SubscriptionDataFetcher;
 import org.eclipse.sirius.components.collaborative.api.IEditingContextEventProcessorRegistry;
-import org.eclipse.sirius.components.collaborative.dto.SubscribersUpdatedEventPayload;
 import org.eclipse.sirius.components.collaborative.forms.api.IFormEventProcessor;
 import org.eclipse.sirius.components.collaborative.forms.api.RepresentationsConfiguration;
-import org.eclipse.sirius.components.collaborative.forms.dto.FormRefreshedEventPayload;
 import org.eclipse.sirius.components.collaborative.forms.dto.PropertiesEventInput;
-import org.eclipse.sirius.components.collaborative.forms.dto.RepresentationsEventInput;
-import org.eclipse.sirius.components.collaborative.forms.dto.WidgetSubscriptionsUpdatedEventPayload;
 import org.eclipse.sirius.components.core.api.IPayload;
 import org.eclipse.sirius.components.graphql.api.IDataFetcherWithFieldCoordinates;
 import org.eclipse.sirius.web.graphql.schema.SubscriptionTypeProvider;
@@ -49,17 +44,7 @@ import reactor.core.publisher.Flux;
  * @author gcoutable
  *
  */
-//@formatter:off
-@GraphQLSubscriptionTypes(
-    input = RepresentationsEventInput.class,
-    payloads = {
-        FormRefreshedEventPayload.class,
-        WidgetSubscriptionsUpdatedEventPayload.class,
-        SubscribersUpdatedEventPayload.class,
-    }
-)
 @SubscriptionDataFetcher(type = SubscriptionTypeProvider.TYPE, field = SubscriptionRepresentationsEventDataFetcher.REPRESENTATIONS_EVENT_FIELD)
-//@formatter:on
 public class SubscriptionRepresentationsEventDataFetcher implements IDataFetcherWithFieldCoordinates<Publisher<IPayload>> {
 
     public static final String REPRESENTATIONS_EVENT_FIELD = "representationsEvent"; //$NON-NLS-1$

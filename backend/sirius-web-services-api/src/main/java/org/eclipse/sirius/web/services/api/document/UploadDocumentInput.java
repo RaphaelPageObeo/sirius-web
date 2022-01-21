@@ -16,11 +16,6 @@ import java.text.MessageFormat;
 import java.util.Objects;
 import java.util.UUID;
 
-import org.eclipse.sirius.components.annotations.graphql.GraphQLField;
-import org.eclipse.sirius.components.annotations.graphql.GraphQLID;
-import org.eclipse.sirius.components.annotations.graphql.GraphQLInputObjectType;
-import org.eclipse.sirius.components.annotations.graphql.GraphQLNonNull;
-import org.eclipse.sirius.components.annotations.graphql.GraphQLUpload;
 import org.eclipse.sirius.components.core.api.IInput;
 import org.eclipse.sirius.components.graphql.api.UploadFile;
 
@@ -29,7 +24,6 @@ import org.eclipse.sirius.components.graphql.api.UploadFile;
  *
  * @author hmarchadour
  */
-@GraphQLInputObjectType
 public final class UploadDocumentInput implements IInput {
 
     private final UUID id;
@@ -45,23 +39,14 @@ public final class UploadDocumentInput implements IInput {
     }
 
     @Override
-    @GraphQLID
-    @GraphQLField
-    @GraphQLNonNull
     public UUID getId() {
         return this.id;
     }
 
-    @GraphQLID
-    @GraphQLField
-    @GraphQLNonNull
     public String getEditingContextId() {
         return this.editingContextId;
     }
 
-    @GraphQLUpload
-    @GraphQLField
-    @GraphQLNonNull
     public UploadFile getFile() {
         return this.file;
     }

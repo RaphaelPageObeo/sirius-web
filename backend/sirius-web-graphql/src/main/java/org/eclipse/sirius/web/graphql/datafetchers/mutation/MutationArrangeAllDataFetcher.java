@@ -17,11 +17,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
-import org.eclipse.sirius.components.annotations.graphql.GraphQLMutationTypes;
 import org.eclipse.sirius.components.annotations.spring.graphql.MutationDataFetcher;
 import org.eclipse.sirius.components.collaborative.api.IEditingContextEventProcessorRegistry;
 import org.eclipse.sirius.components.collaborative.diagrams.dto.ArrangeAllInput;
-import org.eclipse.sirius.components.collaborative.diagrams.dto.ArrangeAllSuccessPayload;
 import org.eclipse.sirius.components.core.api.ErrorPayload;
 import org.eclipse.sirius.components.core.api.IPayload;
 import org.eclipse.sirius.components.graphql.api.IDataFetcherWithFieldCoordinates;
@@ -45,15 +43,7 @@ import graphql.schema.DataFetchingEnvironment;
  * @author wpiers
  *
  */
-// @formatter:off
-@GraphQLMutationTypes(
-    input = ArrangeAllInput.class,
-    payloads = {
-        ArrangeAllSuccessPayload.class
-    }
-)
 @MutationDataFetcher(type = MutationTypeProvider.TYPE, field = MutationArrangeAllDataFetcher.ARRANGE_ALL_FIELD)
-// @formatter:on
 public class MutationArrangeAllDataFetcher implements IDataFetcherWithFieldCoordinates<CompletableFuture<IPayload>> {
     public static final String ARRANGE_ALL_FIELD = "arrangeAll"; //$NON-NLS-1$
 

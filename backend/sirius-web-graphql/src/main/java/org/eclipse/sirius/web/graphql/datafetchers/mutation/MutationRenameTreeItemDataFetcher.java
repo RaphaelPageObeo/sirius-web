@@ -17,11 +17,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
-import org.eclipse.sirius.components.annotations.graphql.GraphQLMutationTypes;
 import org.eclipse.sirius.components.annotations.spring.graphql.MutationDataFetcher;
 import org.eclipse.sirius.components.collaborative.api.IEditingContextEventProcessorRegistry;
 import org.eclipse.sirius.components.collaborative.trees.dto.RenameTreeItemInput;
-import org.eclipse.sirius.components.collaborative.trees.dto.RenameTreeItemSuccessPayload;
 import org.eclipse.sirius.components.core.api.ErrorPayload;
 import org.eclipse.sirius.components.core.api.IPayload;
 import org.eclipse.sirius.components.graphql.api.IDataFetcherWithFieldCoordinates;
@@ -45,15 +43,7 @@ import graphql.schema.DataFetchingEnvironment;
  * @author pcdavid
  * @author sbegaudeau
  */
-// @formatter:off
-@GraphQLMutationTypes(
-    input = RenameTreeItemInput.class,
-    payloads = {
-        RenameTreeItemSuccessPayload.class
-    }
-)
 @MutationDataFetcher(type = MutationTypeProvider.TYPE, field = MutationRenameTreeItemDataFetcher.RENAME_TREE_ITEM_FIELD)
-// @formatter:on
 public class MutationRenameTreeItemDataFetcher implements IDataFetcherWithFieldCoordinates<CompletableFuture<IPayload>> {
 
     public static final String RENAME_TREE_ITEM_FIELD = "renameTreeItem"; //$NON-NLS-1$

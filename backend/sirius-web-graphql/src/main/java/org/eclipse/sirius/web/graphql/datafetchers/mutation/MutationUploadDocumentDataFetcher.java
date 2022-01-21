@@ -18,7 +18,6 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
-import org.eclipse.sirius.components.annotations.graphql.GraphQLMutationTypes;
 import org.eclipse.sirius.components.annotations.spring.graphql.MutationDataFetcher;
 import org.eclipse.sirius.components.collaborative.api.IEditingContextEventProcessorRegistry;
 import org.eclipse.sirius.components.core.api.ErrorPayload;
@@ -28,7 +27,6 @@ import org.eclipse.sirius.components.graphql.api.UploadFile;
 import org.eclipse.sirius.web.graphql.messages.IGraphQLMessageService;
 import org.eclipse.sirius.web.graphql.schema.MutationTypeProvider;
 import org.eclipse.sirius.web.services.api.document.UploadDocumentInput;
-import org.eclipse.sirius.web.services.api.document.UploadDocumentSuccessPayload;
 import org.eclipse.sirius.web.services.api.id.IDParser;
 
 import graphql.schema.DataFetchingEnvironment;
@@ -47,15 +45,7 @@ import graphql.schema.DataFetchingEnvironment;
  *
  * @author smonnier
  */
-// @formatter:off
-@GraphQLMutationTypes(
-    input = UploadDocumentInput.class,
-    payloads = {
-        UploadDocumentSuccessPayload.class,
-    }
-)
 @MutationDataFetcher(type = MutationTypeProvider.TYPE, field = MutationUploadDocumentDataFetcher.UPLOAD_DOCUMENT_FIELD)
-// @formatter:on
 public class MutationUploadDocumentDataFetcher implements IDataFetcherWithFieldCoordinates<CompletableFuture<IPayload>> {
 
     public static final String UPLOAD_DOCUMENT_FIELD = "uploadDocument"; //$NON-NLS-1$

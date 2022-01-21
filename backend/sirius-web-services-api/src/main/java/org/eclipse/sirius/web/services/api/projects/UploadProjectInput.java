@@ -15,11 +15,6 @@ package org.eclipse.sirius.web.services.api.projects;
 import java.text.MessageFormat;
 import java.util.UUID;
 
-import org.eclipse.sirius.components.annotations.graphql.GraphQLField;
-import org.eclipse.sirius.components.annotations.graphql.GraphQLID;
-import org.eclipse.sirius.components.annotations.graphql.GraphQLInputObjectType;
-import org.eclipse.sirius.components.annotations.graphql.GraphQLNonNull;
-import org.eclipse.sirius.components.annotations.graphql.GraphQLUpload;
 import org.eclipse.sirius.components.core.api.IInput;
 import org.eclipse.sirius.components.graphql.api.UploadFile;
 
@@ -28,23 +23,16 @@ import org.eclipse.sirius.components.graphql.api.UploadFile;
  *
  * @author gcoutable
  */
-@GraphQLInputObjectType
 public final class UploadProjectInput implements IInput {
     private UUID id;
 
     private UploadFile file;
 
     @Override
-    @GraphQLID
-    @GraphQLField
-    @GraphQLNonNull
     public UUID getId() {
         return this.id;
     }
 
-    @GraphQLUpload
-    @GraphQLField
-    @GraphQLNonNull
     public UploadFile getFile() {
         return this.file;
     }

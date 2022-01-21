@@ -17,11 +17,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
-import org.eclipse.sirius.components.annotations.graphql.GraphQLMutationTypes;
 import org.eclipse.sirius.components.annotations.spring.graphql.MutationDataFetcher;
 import org.eclipse.sirius.components.collaborative.api.IEditingContextEventProcessorRegistry;
 import org.eclipse.sirius.components.collaborative.diagrams.dto.UpdateNodeBoundsInput;
-import org.eclipse.sirius.components.collaborative.diagrams.dto.UpdateNodeBoundsSuccessPayload;
 import org.eclipse.sirius.components.core.api.ErrorPayload;
 import org.eclipse.sirius.components.core.api.IPayload;
 import org.eclipse.sirius.components.graphql.api.IDataFetcherWithFieldCoordinates;
@@ -44,15 +42,7 @@ import graphql.schema.DataFetchingEnvironment;
  *
  * @author fbarbin
  */
-// @formatter:off
-@GraphQLMutationTypes(
-    input = UpdateNodeBoundsInput.class,
-    payloads = {
-        UpdateNodeBoundsSuccessPayload.class
-    }
-)
 @MutationDataFetcher(type = MutationTypeProvider.TYPE, field = MutationUpdateNodeBoundsDataFetcher.UPDATE_NODE_BOUNDS_FIELD)
-// @formatter:on
 public class MutationUpdateNodeBoundsDataFetcher implements IDataFetcherWithFieldCoordinates<CompletableFuture<IPayload>> {
 
     public static final String UPDATE_NODE_BOUNDS_FIELD = "updateNodeBounds"; //$NON-NLS-1$

@@ -18,11 +18,9 @@ import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
-import org.eclipse.sirius.components.annotations.graphql.GraphQLMutationTypes;
 import org.eclipse.sirius.components.annotations.spring.graphql.MutationDataFetcher;
 import org.eclipse.sirius.components.collaborative.api.IEditingContextEventProcessorRegistry;
 import org.eclipse.sirius.components.collaborative.dto.RenameDocumentInput;
-import org.eclipse.sirius.components.collaborative.dto.RenameDocumentSuccessPayload;
 import org.eclipse.sirius.components.core.api.ErrorPayload;
 import org.eclipse.sirius.components.core.api.IPayload;
 import org.eclipse.sirius.components.graphql.api.IDataFetcherWithFieldCoordinates;
@@ -49,15 +47,7 @@ import reactor.core.publisher.Mono;
  *
  * @author fbarbin
  */
-// @formatter:off
-@GraphQLMutationTypes(
-    input = RenameDocumentInput.class,
-    payloads = {
-        RenameDocumentSuccessPayload.class
-    }
-)
 @MutationDataFetcher(type = MutationTypeProvider.TYPE, field = MutationRenameDocumentDataFetcher.RENAME_DOCUMENT_FIELD)
-// @formatter:on
 public class MutationRenameDocumentDataFetcher implements IDataFetcherWithFieldCoordinates<CompletableFuture<IPayload>> {
 
     public static final String RENAME_DOCUMENT_FIELD = "renameDocument"; //$NON-NLS-1$

@@ -29,7 +29,6 @@ import org.eclipse.sirius.components.annotations.spring.graphql.SubscriptionData
 import org.eclipse.sirius.components.collaborative.dto.Subscriber;
 import org.eclipse.sirius.components.core.api.ErrorPayload;
 import org.eclipse.sirius.components.graphql.api.IDataFetcherWithFieldCoordinates;
-import org.eclipse.sirius.components.graphql.utils.providers.GraphQLInputObjectTypeProvider;
 import org.eclipse.sirius.components.graphql.utils.providers.GraphQLNameProvider;
 import org.eclipse.sirius.components.graphql.utils.providers.GraphQLObjectTypeProvider;
 import org.eclipse.sirius.components.graphql.utils.schema.ISubscriptionTypeProvider;
@@ -62,8 +61,6 @@ public class SubscriptionTypeProvider implements ISubscriptionTypeProvider {
     private final GraphQLNameProvider graphQLNameProvider = new GraphQLNameProvider();
 
     private final GraphQLObjectTypeProvider graphQLObjectTypeProvider = new GraphQLObjectTypeProvider();
-
-    private final GraphQLInputObjectTypeProvider graphQLInputObjectTypeProvider = new GraphQLInputObjectTypeProvider();
 
     private final List<Class<?>> subscriptionDataFetcherClasses;
 
@@ -112,12 +109,6 @@ public class SubscriptionTypeProvider implements ISubscriptionTypeProvider {
     @Override
     public Set<GraphQLType> getAdditionalTypes() {
         // @formatter:off
-        var graphQLInputObjectTypes = this.subscriptionDataFetcherClasses.stream()
-                .map(dataFetcherClass -> dataFetcherClass.getAnnotation(GraphQLSubscriptionTypes.class))
-                .map(GraphQLSubscriptionTypes::input)
-                .map(this.graphQLInputObjectTypeProvider::getType)
-                .collect(Collectors.toUnmodifiableList());
-
         List<GraphQLNamedType> graphQLTypes = new ArrayList<>();
         for (Class<?> subscriptionDataFetcherClass : this.subscriptionDataFetcherClasses) {
             List<GraphQLObjectType> graphQLPayloadTypes = this.getGraphQLPayloadTypes(subscriptionDataFetcherClass);
@@ -138,7 +129,6 @@ public class SubscriptionTypeProvider implements ISubscriptionTypeProvider {
 
         Set<GraphQLType> types = new LinkedHashSet<>();
         types.addAll(graphQLTypes);
-        types.addAll(graphQLInputObjectTypes);
         types.add(this.graphQLObjectTypeProvider.getType(Subscriber.class));
 
         return types;

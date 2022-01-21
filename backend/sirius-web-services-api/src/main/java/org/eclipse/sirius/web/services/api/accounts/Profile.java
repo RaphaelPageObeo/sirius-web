@@ -16,17 +16,11 @@ import java.text.MessageFormat;
 import java.util.Objects;
 import java.util.UUID;
 
-import org.eclipse.sirius.components.annotations.graphql.GraphQLField;
-import org.eclipse.sirius.components.annotations.graphql.GraphQLID;
-import org.eclipse.sirius.components.annotations.graphql.GraphQLNonNull;
-import org.eclipse.sirius.components.annotations.graphql.GraphQLObjectType;
-
 /**
  * Profile data transfer object used by the services.
  *
  * @author sbegaudeau
  */
-@GraphQLObjectType
 public class Profile {
     private final UUID id;
 
@@ -37,15 +31,10 @@ public class Profile {
         this.username = Objects.requireNonNull(username);
     }
 
-    @GraphQLID
-    @GraphQLNonNull
-    @GraphQLField
     public UUID getId() {
         return this.id;
     }
 
-    @GraphQLNonNull
-    @GraphQLField
     public String getUsername() {
         return this.username;
     }

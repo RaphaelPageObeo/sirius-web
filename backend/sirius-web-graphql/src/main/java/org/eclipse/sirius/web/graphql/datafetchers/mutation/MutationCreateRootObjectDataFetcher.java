@@ -17,11 +17,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
-import org.eclipse.sirius.components.annotations.graphql.GraphQLMutationTypes;
 import org.eclipse.sirius.components.annotations.spring.graphql.MutationDataFetcher;
 import org.eclipse.sirius.components.collaborative.api.IEditingContextEventProcessorRegistry;
 import org.eclipse.sirius.components.collaborative.dto.CreateRootObjectInput;
-import org.eclipse.sirius.components.collaborative.dto.CreateRootObjectSuccessPayload;
 import org.eclipse.sirius.components.core.api.ErrorPayload;
 import org.eclipse.sirius.components.core.api.IPayload;
 import org.eclipse.sirius.components.graphql.api.IDataFetcherWithFieldCoordinates;
@@ -44,15 +42,7 @@ import graphql.schema.DataFetchingEnvironment;
  *
  * @author lfasani
  */
-// @formatter:off
-@GraphQLMutationTypes(
-    input = CreateRootObjectInput.class,
-    payloads = {
-        CreateRootObjectSuccessPayload.class
-    }
-)
 @MutationDataFetcher(type = MutationTypeProvider.TYPE, field = MutationCreateRootObjectDataFetcher.CREATE_ROOT_OBJECT_FIELD)
-// @formatter:on
 public class MutationCreateRootObjectDataFetcher implements IDataFetcherWithFieldCoordinates<CompletableFuture<IPayload>> {
 
     public static final String CREATE_ROOT_OBJECT_FIELD = "createRootObject"; //$NON-NLS-1$

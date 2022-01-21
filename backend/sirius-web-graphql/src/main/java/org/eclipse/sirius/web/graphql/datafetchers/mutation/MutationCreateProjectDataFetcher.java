@@ -16,13 +16,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.Objects;
 
-import org.eclipse.sirius.components.annotations.graphql.GraphQLMutationTypes;
 import org.eclipse.sirius.components.annotations.spring.graphql.MutationDataFetcher;
 import org.eclipse.sirius.components.core.api.IPayload;
 import org.eclipse.sirius.components.graphql.api.IDataFetcherWithFieldCoordinates;
 import org.eclipse.sirius.web.graphql.schema.MutationTypeProvider;
 import org.eclipse.sirius.web.services.api.projects.CreateProjectInput;
-import org.eclipse.sirius.web.services.api.projects.CreateProjectSuccessPayload;
 import org.eclipse.sirius.web.services.api.projects.IProjectService;
 
 import graphql.schema.DataFetchingEnvironment;
@@ -41,15 +39,7 @@ import graphql.schema.DataFetchingEnvironment;
  *
  * @author hmarchadour
  */
-// @formatter:off
-@GraphQLMutationTypes(
-    input = CreateProjectInput.class,
-    payloads = {
-        CreateProjectSuccessPayload.class
-    }
-)
 @MutationDataFetcher(type = MutationTypeProvider.TYPE, field = MutationCreateProjectDataFetcher.CREATE_PROJECT_FIELD)
-// @formatter:on
 public class MutationCreateProjectDataFetcher implements IDataFetcherWithFieldCoordinates<IPayload> {
 
     public static final String CREATE_PROJECT_FIELD = "createProject"; //$NON-NLS-1$

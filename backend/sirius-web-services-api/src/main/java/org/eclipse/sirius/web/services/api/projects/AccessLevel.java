@@ -12,14 +12,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.web.services.api.projects;
 
-import org.eclipse.sirius.components.annotations.graphql.GraphQLEnumType;
-
 /**
  * The possible access levels to a project.
  *
  * @author pcdavid
  */
-@GraphQLEnumType
 public enum AccessLevel {
     READ, EDIT, ADMIN
 }

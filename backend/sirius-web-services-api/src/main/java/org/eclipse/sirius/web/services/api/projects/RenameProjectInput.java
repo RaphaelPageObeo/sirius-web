@@ -16,10 +16,6 @@ import java.text.MessageFormat;
 import java.util.Objects;
 import java.util.UUID;
 
-import org.eclipse.sirius.components.annotations.graphql.GraphQLField;
-import org.eclipse.sirius.components.annotations.graphql.GraphQLID;
-import org.eclipse.sirius.components.annotations.graphql.GraphQLInputObjectType;
-import org.eclipse.sirius.components.annotations.graphql.GraphQLNonNull;
 import org.eclipse.sirius.components.core.api.IInput;
 
 /**
@@ -27,7 +23,6 @@ import org.eclipse.sirius.components.core.api.IInput;
  *
  * @author fbarbin
  */
-@GraphQLInputObjectType
 public final class RenameProjectInput implements IInput {
     private UUID id;
 
@@ -46,22 +41,14 @@ public final class RenameProjectInput implements IInput {
     }
 
     @Override
-    @GraphQLID
-    @GraphQLField
-    @GraphQLNonNull
     public UUID getId() {
         return this.id;
     }
 
-    @GraphQLID
-    @GraphQLField
-    @GraphQLNonNull
     public UUID getProjectId() {
         return this.projectId;
     }
 
-    @GraphQLField
-    @GraphQLNonNull
     public String getNewName() {
         return this.newName;
     }

@@ -16,14 +16,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.Objects;
 
-import org.eclipse.sirius.components.annotations.graphql.GraphQLSubscriptionTypes;
 import org.eclipse.sirius.components.annotations.spring.graphql.SubscriptionDataFetcher;
 import org.eclipse.sirius.components.collaborative.api.IEditingContextEventProcessorRegistry;
-import org.eclipse.sirius.components.collaborative.dto.SubscribersUpdatedEventPayload;
 import org.eclipse.sirius.components.collaborative.trees.api.ITreeEventProcessor;
 import org.eclipse.sirius.components.collaborative.trees.api.TreeConfiguration;
 import org.eclipse.sirius.components.collaborative.trees.dto.TreeEventInput;
-import org.eclipse.sirius.components.collaborative.trees.dto.TreeRefreshedEventPayload;
 import org.eclipse.sirius.components.core.api.IPayload;
 import org.eclipse.sirius.components.graphql.api.IDataFetcherWithFieldCoordinates;
 import org.eclipse.sirius.web.graphql.schema.SubscriptionTypeProvider;
@@ -47,16 +44,7 @@ import reactor.core.publisher.Flux;
  * @author hmarchadour
  * @author pcdavid
  */
-// @formatter:off
-@GraphQLSubscriptionTypes(
-    input = TreeEventInput.class,
-    payloads = {
-        TreeRefreshedEventPayload.class,
-        SubscribersUpdatedEventPayload.class,
-    }
-)
 @SubscriptionDataFetcher(type = SubscriptionTypeProvider.TYPE, field = SubscriptionTreeEventDataFetcher.TREE_EVENT_FIELD)
-// @formatter:on
 public class SubscriptionTreeEventDataFetcher implements IDataFetcherWithFieldCoordinates<Publisher<IPayload>> {
 
     public static final String TREE_EVENT_FIELD = "treeEvent"; //$NON-NLS-1$

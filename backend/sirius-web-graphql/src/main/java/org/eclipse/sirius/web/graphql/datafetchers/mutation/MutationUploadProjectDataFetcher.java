@@ -17,7 +17,6 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 
-import org.eclipse.sirius.components.annotations.graphql.GraphQLMutationTypes;
 import org.eclipse.sirius.components.annotations.spring.graphql.MutationDataFetcher;
 import org.eclipse.sirius.components.core.api.ErrorPayload;
 import org.eclipse.sirius.components.core.api.IPayload;
@@ -29,7 +28,6 @@ import org.eclipse.sirius.web.services.api.id.IDParser;
 import org.eclipse.sirius.web.services.api.projects.IProjectImportService;
 import org.eclipse.sirius.web.services.api.projects.Project;
 import org.eclipse.sirius.web.services.api.projects.UploadProjectInput;
-import org.eclipse.sirius.web.services.api.projects.UploadProjectSuccessPayload;
 
 import graphql.schema.DataFetchingEnvironment;
 
@@ -47,14 +45,6 @@ import graphql.schema.DataFetchingEnvironment;
  *
  * @author gcoutable
  */
-//@formatter:off
-@GraphQLMutationTypes(
-    input = UploadProjectInput.class,
-    payloads = {
-        UploadProjectSuccessPayload.class
-    }
-)
-//@formatter:on
 @MutationDataFetcher(type = MutationTypeProvider.TYPE, field = MutationUploadProjectDataFetcher.UPLOAD_PROJECT_FIELD)
 public class MutationUploadProjectDataFetcher implements IDataFetcherWithFieldCoordinates<IPayload> {
 

@@ -18,11 +18,9 @@ import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
-import org.eclipse.sirius.components.annotations.graphql.GraphQLMutationTypes;
 import org.eclipse.sirius.components.annotations.spring.graphql.MutationDataFetcher;
 import org.eclipse.sirius.components.collaborative.api.IEditingContextEventProcessorRegistry;
 import org.eclipse.sirius.components.collaborative.dto.DeleteRepresentationInput;
-import org.eclipse.sirius.components.collaborative.dto.DeleteRepresentationSuccessPayload;
 import org.eclipse.sirius.components.core.api.ErrorPayload;
 import org.eclipse.sirius.components.core.api.IPayload;
 import org.eclipse.sirius.components.graphql.api.IDataFetcherWithFieldCoordinates;
@@ -50,15 +48,7 @@ import reactor.core.publisher.Mono;
  *
  * @author lfasani
  */
-// @formatter:off
-@GraphQLMutationTypes(
-    input = DeleteRepresentationInput.class,
-    payloads = {
-        DeleteRepresentationSuccessPayload.class
-    }
-)
 @MutationDataFetcher(type = MutationTypeProvider.TYPE, field = MutationDeleteRepresentationDataFetcher.DELETE_REPRESENTATION_FIELD)
-// @formatter:on
 public class MutationDeleteRepresentationDataFetcher implements IDataFetcherWithFieldCoordinates<CompletableFuture<IPayload>> {
 
     public static final String DELETE_REPRESENTATION_FIELD = "deleteRepresentation"; //$NON-NLS-1$

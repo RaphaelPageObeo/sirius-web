@@ -17,11 +17,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
-import org.eclipse.sirius.components.annotations.graphql.GraphQLMutationTypes;
 import org.eclipse.sirius.components.annotations.spring.graphql.MutationDataFetcher;
 import org.eclipse.sirius.components.collaborative.api.IEditingContextEventProcessorRegistry;
 import org.eclipse.sirius.components.collaborative.dto.CreateChildInput;
-import org.eclipse.sirius.components.collaborative.dto.CreateChildSuccessPayload;
 import org.eclipse.sirius.components.core.api.ErrorPayload;
 import org.eclipse.sirius.components.core.api.IPayload;
 import org.eclipse.sirius.components.graphql.api.IDataFetcherWithFieldCoordinates;
@@ -45,15 +43,7 @@ import graphql.schema.DataFetchingEnvironment;
  * @author sbegaudeau
  * @author pcdavid
  */
-// @formatter:off
-@GraphQLMutationTypes(
-    input = CreateChildInput.class,
-    payloads = {
-        CreateChildSuccessPayload.class
-    }
-)
 @MutationDataFetcher(type = MutationTypeProvider.TYPE, field = MutationCreateChildDataFetcher.CREATE_CHILD_FIELD)
-// @formatter:on
 public class MutationCreateChildDataFetcher implements IDataFetcherWithFieldCoordinates<CompletableFuture<IPayload>> {
 
     public static final String CREATE_CHILD_FIELD = "createChild"; //$NON-NLS-1$

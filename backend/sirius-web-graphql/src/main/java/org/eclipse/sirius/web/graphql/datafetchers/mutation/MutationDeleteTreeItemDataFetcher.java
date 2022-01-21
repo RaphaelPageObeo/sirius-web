@@ -17,11 +17,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
-import org.eclipse.sirius.components.annotations.graphql.GraphQLMutationTypes;
 import org.eclipse.sirius.components.annotations.spring.graphql.MutationDataFetcher;
 import org.eclipse.sirius.components.collaborative.api.IEditingContextEventProcessorRegistry;
 import org.eclipse.sirius.components.collaborative.trees.dto.DeleteTreeItemInput;
-import org.eclipse.sirius.components.collaborative.trees.dto.DeleteTreeItemSuccessPayload;
 import org.eclipse.sirius.components.core.api.ErrorPayload;
 import org.eclipse.sirius.components.core.api.IPayload;
 import org.eclipse.sirius.components.graphql.api.IDataFetcherWithFieldCoordinates;
@@ -44,15 +42,7 @@ import graphql.schema.DataFetchingEnvironment;
  *
  * @author pcdavid
  */
-// @formatter:off
-@GraphQLMutationTypes(
-    input = DeleteTreeItemInput.class,
-    payloads = {
-        DeleteTreeItemSuccessPayload.class
-    }
-)
 @MutationDataFetcher(type = MutationTypeProvider.TYPE, field = MutationDeleteTreeItemDataFetcher.DELETE_TREE_ITEM_FIELD)
-// @formatter:on
 public class MutationDeleteTreeItemDataFetcher implements IDataFetcherWithFieldCoordinates<CompletableFuture<IPayload>> {
 
     public static final String DELETE_TREE_ITEM_FIELD = "deleteTreeItem"; //$NON-NLS-1$

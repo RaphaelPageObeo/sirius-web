@@ -14,14 +14,11 @@ package org.eclipse.sirius.web.services.api.viewer;
 
 import java.util.UUID;
 
-import org.eclipse.sirius.components.annotations.graphql.GraphQLInterfaceType;
-
 /**
  * Interface used to represent a viewer.
  *
  * @author gcoutable
  */
-@GraphQLInterfaceType(name = "Viewer")
 public interface IViewer {
     UUID getId();
 

@@ -16,10 +16,6 @@ import java.text.MessageFormat;
 import java.util.Objects;
 import java.util.UUID;
 
-import org.eclipse.sirius.components.annotations.graphql.GraphQLField;
-import org.eclipse.sirius.components.annotations.graphql.GraphQLID;
-import org.eclipse.sirius.components.annotations.graphql.GraphQLNonNull;
-import org.eclipse.sirius.components.annotations.graphql.GraphQLObjectType;
 import org.eclipse.sirius.components.core.api.IPayload;
 
 /**
@@ -27,7 +23,6 @@ import org.eclipse.sirius.components.core.api.IPayload;
  *
  * @author fbarbin
  */
-@GraphQLObjectType
 public final class RenameProjectSuccessPayload implements IPayload {
 
     private final UUID id;
@@ -40,15 +35,10 @@ public final class RenameProjectSuccessPayload implements IPayload {
     }
 
     @Override
-    @GraphQLID
-    @GraphQLField
-    @GraphQLNonNull
     public UUID getId() {
         return this.id;
     }
 
-    @GraphQLField
-    @GraphQLNonNull
     public Project getProject() {
         return this.project;
     }

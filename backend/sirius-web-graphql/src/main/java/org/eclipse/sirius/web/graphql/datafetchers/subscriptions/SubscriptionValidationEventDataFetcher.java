@@ -16,14 +16,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.Objects;
 
-import org.eclipse.sirius.components.annotations.graphql.GraphQLSubscriptionTypes;
 import org.eclipse.sirius.components.annotations.spring.graphql.SubscriptionDataFetcher;
 import org.eclipse.sirius.components.collaborative.api.IEditingContextEventProcessorRegistry;
-import org.eclipse.sirius.components.collaborative.dto.SubscribersUpdatedEventPayload;
 import org.eclipse.sirius.components.collaborative.validation.api.IValidationEventProcessor;
 import org.eclipse.sirius.components.collaborative.validation.api.ValidationConfiguration;
 import org.eclipse.sirius.components.collaborative.validation.dto.ValidationEventInput;
-import org.eclipse.sirius.components.collaborative.validation.dto.ValidationRefreshedEventPayload;
 import org.eclipse.sirius.components.core.api.IPayload;
 import org.eclipse.sirius.components.graphql.api.IDataFetcherWithFieldCoordinates;
 import org.eclipse.sirius.web.graphql.schema.SubscriptionTypeProvider;
@@ -46,16 +43,7 @@ import reactor.core.publisher.Flux;
  *
  * @author gcoutable
  */
-//@formatter:off
-@GraphQLSubscriptionTypes(
-    input = ValidationEventInput.class,
-    payloads = {
-        ValidationRefreshedEventPayload.class,
-        SubscribersUpdatedEventPayload.class,
-    }
-)
 @SubscriptionDataFetcher(type = SubscriptionTypeProvider.TYPE, field = SubscriptionValidationEventDataFetcher.VALIDATION_EVENT_FIELD)
-//@formatter:on
 public class SubscriptionValidationEventDataFetcher implements IDataFetcherWithFieldCoordinates<Publisher<IPayload>> {
 
     public static final String VALIDATION_EVENT_FIELD = "validationEvent"; //$NON-NLS-1$

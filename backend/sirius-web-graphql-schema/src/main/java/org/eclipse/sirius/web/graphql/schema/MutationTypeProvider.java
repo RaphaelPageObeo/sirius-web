@@ -28,7 +28,6 @@ import org.eclipse.sirius.components.annotations.graphql.GraphQLMutationTypes;
 import org.eclipse.sirius.components.annotations.spring.graphql.MutationDataFetcher;
 import org.eclipse.sirius.components.core.api.ErrorPayload;
 import org.eclipse.sirius.components.graphql.api.IDataFetcherWithFieldCoordinates;
-import org.eclipse.sirius.components.graphql.utils.providers.GraphQLInputObjectTypeProvider;
 import org.eclipse.sirius.components.graphql.utils.providers.GraphQLNameProvider;
 import org.eclipse.sirius.components.graphql.utils.providers.GraphQLObjectTypeProvider;
 import org.eclipse.sirius.components.graphql.utils.schema.IMutationTypeProvider;
@@ -56,8 +55,6 @@ public class MutationTypeProvider implements IMutationTypeProvider {
     private static final String PAYLOAD_SUFFIX = "Payload"; //$NON-NLS-1$
 
     private final GraphQLObjectTypeProvider graphQLObjectTypeProvider = new GraphQLObjectTypeProvider();
-
-    private final GraphQLInputObjectTypeProvider graphQLInputObjectTypeProvider = new GraphQLInputObjectTypeProvider();
 
     private final GraphQLNameProvider graphQLNameProvider = new GraphQLNameProvider();
 
@@ -107,13 +104,6 @@ public class MutationTypeProvider implements IMutationTypeProvider {
 
     @Override
     public Set<GraphQLType> getAdditionalTypes() {
-        // @formatter:off
-        var graphQLInputObjectTypes = this.mutationDataFetcherClass.stream()
-                .map(dataFetcherClass -> dataFetcherClass.getAnnotation(GraphQLMutationTypes.class))
-                .map(GraphQLMutationTypes::input)
-                .map(this.graphQLInputObjectTypeProvider::getType)
-                .collect(Collectors.toUnmodifiableList());
-
         var graphQLObjectTypes = this.mutationDataFetcherClass.stream()
                 .flatMap(this::getGraphQLPayloadTypes)
                 .collect(Collectors.toUnmodifiableList());
@@ -123,7 +113,6 @@ public class MutationTypeProvider implements IMutationTypeProvider {
 
         Set<GraphQLType> types = new LinkedHashSet<>();
         types.addAll(graphQLObjectTypes);
-        types.addAll(graphQLInputObjectTypes);
         types.add(errorPayloadObjectType);
         return types;
     }

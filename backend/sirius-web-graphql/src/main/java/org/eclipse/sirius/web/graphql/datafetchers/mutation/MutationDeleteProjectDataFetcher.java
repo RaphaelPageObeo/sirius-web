@@ -16,7 +16,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.Objects;
 
-import org.eclipse.sirius.components.annotations.graphql.GraphQLMutationTypes;
 import org.eclipse.sirius.components.annotations.spring.graphql.MutationDataFetcher;
 import org.eclipse.sirius.components.collaborative.api.IEditingContextEventProcessorRegistry;
 import org.eclipse.sirius.components.core.api.ErrorPayload;
@@ -46,15 +45,7 @@ import graphql.schema.DataFetchingEnvironment;
  *
  * @author fbarbin
  */
-// @formatter:off
-@GraphQLMutationTypes(
-    input = DeleteProjectInput.class,
-    payloads = {
-        DeleteProjectSuccessPayload.class
-    }
-)
 @MutationDataFetcher(type = MutationTypeProvider.TYPE, field = MutationDeleteProjectDataFetcher.DELETE_PROJECT_FIELD)
-// @formatter:on
 public class MutationDeleteProjectDataFetcher implements IDataFetcherWithFieldCoordinates<IPayload> {
 
     public static final String DELETE_PROJECT_FIELD = "deleteProject"; //$NON-NLS-1$

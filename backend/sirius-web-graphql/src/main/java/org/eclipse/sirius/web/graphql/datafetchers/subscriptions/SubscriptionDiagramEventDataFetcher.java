@@ -16,14 +16,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.Objects;
 
-import org.eclipse.sirius.components.annotations.graphql.GraphQLSubscriptionTypes;
 import org.eclipse.sirius.components.annotations.spring.graphql.SubscriptionDataFetcher;
 import org.eclipse.sirius.components.collaborative.api.IEditingContextEventProcessorRegistry;
 import org.eclipse.sirius.components.collaborative.diagrams.api.DiagramConfiguration;
 import org.eclipse.sirius.components.collaborative.diagrams.api.IDiagramEventProcessor;
 import org.eclipse.sirius.components.collaborative.diagrams.dto.DiagramEventInput;
-import org.eclipse.sirius.components.collaborative.diagrams.dto.DiagramRefreshedEventPayload;
-import org.eclipse.sirius.components.collaborative.dto.SubscribersUpdatedEventPayload;
 import org.eclipse.sirius.components.core.api.IPayload;
 import org.eclipse.sirius.components.graphql.api.IDataFetcherWithFieldCoordinates;
 import org.eclipse.sirius.web.graphql.schema.SubscriptionTypeProvider;
@@ -47,16 +44,7 @@ import reactor.core.publisher.Flux;
  * @author sbegaudeau
  * @author pcdavid
  */
-// @formatter:off
-@GraphQLSubscriptionTypes(
-    input = DiagramEventInput.class,
-    payloads = {
-        DiagramRefreshedEventPayload.class,
-        SubscribersUpdatedEventPayload.class,
-    }
-)
 @SubscriptionDataFetcher(type = SubscriptionTypeProvider.TYPE, field = SubscriptionDiagramEventDataFetcher.DIAGRAM_EVENT_FIELD)
-// @formatter:on
 public class SubscriptionDiagramEventDataFetcher implements IDataFetcherWithFieldCoordinates<Publisher<IPayload>> {
 
     public static final String DIAGRAM_EVENT_FIELD = "diagramEvent"; //$NON-NLS-1$

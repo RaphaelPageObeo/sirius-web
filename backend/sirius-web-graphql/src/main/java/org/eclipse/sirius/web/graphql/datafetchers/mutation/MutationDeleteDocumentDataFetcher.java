@@ -18,11 +18,9 @@ import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
-import org.eclipse.sirius.components.annotations.graphql.GraphQLMutationTypes;
 import org.eclipse.sirius.components.annotations.spring.graphql.MutationDataFetcher;
 import org.eclipse.sirius.components.collaborative.api.IEditingContextEventProcessorRegistry;
 import org.eclipse.sirius.components.collaborative.dto.DeleteDocumentInput;
-import org.eclipse.sirius.components.collaborative.dto.DeleteDocumentSuccessPayload;
 import org.eclipse.sirius.components.core.api.ErrorPayload;
 import org.eclipse.sirius.components.core.api.IPayload;
 import org.eclipse.sirius.components.graphql.api.IDataFetcherWithFieldCoordinates;
@@ -49,15 +47,7 @@ import reactor.core.publisher.Mono;
  *
  * @author fbarbin
  */
-// @formatter:off
-@GraphQLMutationTypes(
-    input = DeleteDocumentInput.class,
-    payloads = {
-        DeleteDocumentSuccessPayload.class
-    }
-)
 @MutationDataFetcher(type = MutationTypeProvider.TYPE, field = MutationDeleteDocumentDataFetcher.DELETE_DOCUMENT_FIELD)
-// @formatter:on
 public class MutationDeleteDocumentDataFetcher implements IDataFetcherWithFieldCoordinates<CompletableFuture<IPayload>> {
 
     public static final String DELETE_DOCUMENT_FIELD = "deleteDocument"; //$NON-NLS-1$

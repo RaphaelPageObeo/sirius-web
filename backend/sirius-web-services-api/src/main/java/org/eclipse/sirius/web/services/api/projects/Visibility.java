@@ -12,14 +12,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.web.services.api.projects;
 
-import org.eclipse.sirius.components.annotations.graphql.GraphQLEnumType;
-
 /**
  * Possible visibilities for projects.
  *
  * @author pcdavid
  */
-@GraphQLEnumType
 public enum Visibility {
     /**
      * Public projects are visible to everyone.

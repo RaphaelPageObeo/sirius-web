@@ -17,11 +17,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
-import org.eclipse.sirius.components.annotations.graphql.GraphQLMutationTypes;
 import org.eclipse.sirius.components.annotations.spring.graphql.MutationDataFetcher;
 import org.eclipse.sirius.components.collaborative.api.IEditingContextEventProcessorRegistry;
 import org.eclipse.sirius.components.collaborative.diagrams.dto.InvokeEdgeToolOnDiagramInput;
-import org.eclipse.sirius.components.collaborative.diagrams.dto.InvokeEdgeToolOnDiagramSuccessPayload;
 import org.eclipse.sirius.components.core.api.ErrorPayload;
 import org.eclipse.sirius.components.core.api.IPayload;
 import org.eclipse.sirius.components.graphql.api.IDataFetcherWithFieldCoordinates;
@@ -45,15 +43,7 @@ import graphql.schema.DataFetchingEnvironment;
  * @author pcdavid
  * @author hmarchadour
  */
-// @formatter:off
-@GraphQLMutationTypes(
-    input = InvokeEdgeToolOnDiagramInput.class,
-    payloads = {
-        InvokeEdgeToolOnDiagramSuccessPayload.class
-    }
-)
 @MutationDataFetcher(type = MutationTypeProvider.TYPE, field = MutationInvokeEdgeToolOnDiagramDataFetcher.INVOKE_EDGE_TOOL_ON_DIAGRAM_FIELD)
-// @formatter:on
 public class MutationInvokeEdgeToolOnDiagramDataFetcher implements IDataFetcherWithFieldCoordinates<CompletableFuture<IPayload>> {
 
     public static final String INVOKE_EDGE_TOOL_ON_DIAGRAM_FIELD = "invokeEdgeToolOnDiagram"; //$NON-NLS-1$

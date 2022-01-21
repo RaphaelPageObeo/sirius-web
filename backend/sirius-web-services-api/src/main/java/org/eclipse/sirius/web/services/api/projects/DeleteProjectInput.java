@@ -15,10 +15,6 @@ package org.eclipse.sirius.web.services.api.projects;
 import java.text.MessageFormat;
 import java.util.UUID;
 
-import org.eclipse.sirius.components.annotations.graphql.GraphQLField;
-import org.eclipse.sirius.components.annotations.graphql.GraphQLID;
-import org.eclipse.sirius.components.annotations.graphql.GraphQLInputObjectType;
-import org.eclipse.sirius.components.annotations.graphql.GraphQLNonNull;
 import org.eclipse.sirius.components.core.api.IInput;
 
 /**
@@ -26,23 +22,16 @@ import org.eclipse.sirius.components.core.api.IInput;
  *
  * @author sbegaudeau
  */
-@GraphQLInputObjectType
 public final class DeleteProjectInput implements IInput {
     private UUID id;
 
     private UUID projectId;
 
     @Override
-    @GraphQLID
-    @GraphQLField
-    @GraphQLNonNull
     public UUID getId() {
         return this.id;
     }
 
-    @GraphQLID
-    @GraphQLField
-    @GraphQLNonNull
     public UUID getProjectId() {
         return this.projectId;
     }
