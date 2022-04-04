@@ -35,7 +35,7 @@ public class RepresentationsRepresentationRefreshPolicyProvider implements IRepr
 
     @Override
     public boolean canHandle(IRepresentationDescription representationDescription) {
-        return UUID.nameUUIDFromBytes(RepresentationsDescriptionProvider.REPRESENTATIONS_DEFAULT_FORM_DESCRIPTION_ID.getBytes()).equals(representationDescription.getId());
+        return UUID.nameUUIDFromBytes(RepresentationsDescriptionProvider.REPRESENTATIONS_DEFAULT_FORM_DESCRIPTION_ID.getBytes()).toString().equals(representationDescription.getId());
     }
 
     @Override
